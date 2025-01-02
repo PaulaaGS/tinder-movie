@@ -1,16 +1,17 @@
+import { Movie } from "../models/MovieModel";
+
 interface MovieCardProps {
-  title: string;
-  rating: number;
-  img: string;
-  summary: string;
+  movie: Movie;
 }
 
-export const MovieCard = ({ title, rating, img, summary }: MovieCardProps) => {
+export const MovieCard = ({
+  movie: { title, rating, imageURL, summary },
+}: MovieCardProps) => {
   return (
     <div>
       <h1>{title}</h1>
       <p>Rating: {rating}/10</p>
-      <img src={img} alt={title}/>
+      <img src={imageURL} alt={title} />
       <div>{summary}</div>
       <div>
         <button>Accept</button>

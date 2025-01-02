@@ -1,14 +1,14 @@
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import "./App.css";
-import { MovieCard } from "./components/MovieCard";
+import { MoviesViewer } from "./components/MoviesViewer";
+
+const queryClient = new QueryClient();
 
 function App() {
   return (
-    <MovieCard
-      title="Star Wars: Episode VII - The Force Awakens"
-      rating={5}
-      img="https://upload.wikimedia.org/wikipedia/en/0/0d/Avengers_Endgame_poster.jpg"
-      summary="Lorem ipsum...."
-    />
+    <QueryClientProvider client={queryClient}>
+      <MoviesViewer />
+    </QueryClientProvider>
   );
 }
 
