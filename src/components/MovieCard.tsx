@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import { Movie } from "../models/MovieModel";
 import { Loading } from "./Loading";
+import "./MovieCard.css";
 
 interface MovieCardProps {
   movie: Movie;
@@ -57,11 +58,7 @@ export const MovieCard = ({
             readOnly
           />
         </Box>
-        <img
-          src={imageURL}
-          alt={title}
-          style={{ maxWidth: "100%", pointerEvents: "none" }}
-        />
+        <img src={imageURL} alt={title} className="movie-image" />
         <Box fontSize={12}>{summary}</Box>
       </CardContent>
       <CardActions
