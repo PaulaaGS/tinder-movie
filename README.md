@@ -1,50 +1,62 @@
-# React + TypeScript + Vite
+# Tinder Movie
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Tinder Movie is a React application built with TypeScript and Vite. It allows users to swipe through a list of movies and accept or reject them, similar to the Tinder app.
 
-Currently, two official plugins are available:
+## Table of Contents
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Getting Started](#getting-started)
+- [Available Scripts](#available-scripts)
+- [Mocking API Requests](#mocking-api-requests)
+- [GitHub Pages Deployment](#github-pages-deployment)
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+To get started with the project, follow these steps:
 
-- Configure the top-level `parserOptions` property like this:
+1. Clone the repository:
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+   ```sh
+   git clone https://github.com/your-username/tinder-movie.git
+   cd tinder-movie
+   ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+2. Install the dependencies:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+   ```sh
+   npm install
+   ```
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+3. Start the development server:
+
+   ```sh
+   npm run dev
+   ```
+
+4. Open your browser and navigate to [http://localhost:5173]([http://localhost:5173) to see the application running.
+
+## Available Scripts
+
+In the project directory, you can run the following scripts:
+
+- `npm run dev`: Starts the development server.
+- `npm run build`: Builds the project for production.
+- `npm run lint`: Runs ESLint to lint the codebase.
+- `npm run preview`: Previews the production build.
+
+## Mocking API Requests
+
+The project uses `msw` (Mock Service Worker) to mock API requests. The mock service worker is configured in the [mocks](./src/mocks/) directory.
+
+- [browser.ts](./src/mocks/browser.ts): Sets up the mock service worker.
+- [handlers.ts](./src/mocks/handlers.ts): Defines the request handlers for the mock API.
+- [movies.json](./src/mocks/movies.json): Contains the mock data for movies.
+
+The mock service worker is started in [main.tsx](./src/main.tsx):
+
+## GitHub Pages Deployment
+
+The project is configured to deploy to GitHub Pages using GitHub Actions. The workflow is defined in [gh-pages-deploy.yml](./.github/workflows/gh-pages-deploy.yml)
+
+To deploy the project to GitHub Pages, push your changes to the main branch or manually trigger the workflow from the Actions tab in your GitHub repository.
+
+Demo is available here: [paulaags.github.io/tinder-movie/](https://paulaags.github.io/tinder-movie/)
