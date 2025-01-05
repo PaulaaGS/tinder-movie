@@ -8,6 +8,7 @@ import {
   Typography,
 } from "@mui/material";
 import { Movie } from "../models/MovieModel";
+import { Loading } from "./Loading";
 
 interface MovieCardProps {
   movie: Movie;
@@ -22,6 +23,7 @@ export const MovieCard = ({
 }: MovieCardProps) => {
   return (
     <Card sx={{ maxWidth: 345, paddingBottom: 5 }}>
+      {isPending && <Loading />}
       <CardContent>
         <h2>{title}</h2>
         <Typography component="legend">Rating: {rating}/10</Typography>

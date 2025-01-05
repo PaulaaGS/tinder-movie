@@ -1,17 +1,13 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
-import { useState } from "react";
+import { useMutation } from "@tanstack/react-query";
+import { FC, useState } from "react";
 import { Movie } from "../models/MovieModel";
 import { MovieCard } from "./MovieCard";
 
-export const MoviesViewer = () => {
-  const { data, isLoading, isFetching } = useQuery<Movie[]>({
-    queryKey: ["movies"],
-    queryFn: async () => {
-      const response = await fetch("http://localhost:5173/api/movies");
-      return await response.json();
-    },
-  });
+interface MoviesViewerProps {
+  movies: Movie[];
+}
 
+export const MoviesViewer: FC<MoviesViewerProps> = ({ movies }) => {
   const { mutate, isPending } = useMutation({
     mutationFn: (params: { movieId: string; accepted: boolean }) => {
       const { movieId, accepted } = params;
@@ -28,31 +24,23 @@ export const MoviesViewer = () => {
   const [movieIndex, setMovieIndex] = useState(0);
 
   const handleClick = (accepted: boolean) => {
-    if (!data) {
-      return;
-    }
-
     mutate(
       {
-        movieId: data[movieIndex].id.toString(),
+        movieId: movies[movieIndex].id.toString(),
         accepted,
       },
       { onSuccess: () => setMovieIndex(movieIndex + 1) }
     );
   };
 
-  if (isLoading || isFetching) {
-    return <div>Loading...</div>;
-  }
-
-  if (!data || movieIndex >= data.length) {
+  if (movieIndex >= movies.length) {
     return <div>No movies to show</div>;
   }
 
   return (
     <div>
       <MovieCard
-        movie={data[movieIndex]}
+        movie={movies[movieIndex]}
         onClick={handleClick}
         isPending={isPending}
       />
