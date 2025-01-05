@@ -1,3 +1,4 @@
+import { Check, Close } from "@mui/icons-material";
 import {
   Button,
   Card,
@@ -7,14 +8,17 @@ import {
   Typography,
 } from "@mui/material";
 import { Movie } from "../models/MovieModel";
-import { Check, Close } from "@mui/icons-material";
 
 interface MovieCardProps {
   movie: Movie;
+  isPending?: boolean;
+  onClick: (accepted: boolean) => void;
 }
 
 export const MovieCard = ({
   movie: { title, rating, imageURL, summary },
+  isPending,
+  onClick,
 }: MovieCardProps) => {
   return (
     <Card sx={{ maxWidth: 345, paddingBottom: 5 }}>
@@ -33,10 +37,22 @@ export const MovieCard = ({
         <div>{summary}</div>
       </CardContent>
       <CardActions sx={{ justifyContent: "center" }}>
-        <Button variant="contained" color="success" startIcon={<Check />}>
+        <Button
+          variant="contained"
+          color="success"
+          startIcon={<Check />}
+          onClick={() => onClick(true)}
+          disabled={isPending}
+        >
           Accept
         </Button>
-        <Button variant="contained" color="error" startIcon={<Close />}>
+        <Button
+          variant="contained"
+          color="error"
+          startIcon={<Close />}
+          onClick={() => onClick(false)}
+          disabled={isPending}
+        >
           Reject
         </Button>
       </CardActions>

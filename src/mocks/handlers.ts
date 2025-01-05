@@ -1,8 +1,14 @@
-import {http, HttpResponse} from 'msw'
-import moviesJson from './movies.json'
+import { delay, http, HttpResponse } from "msw";
+import moviesJson from "./movies.json";
 
 export const handlers = [
-    http.get('http://localhost:5173/api/movies', () => {
-        return HttpResponse.json(moviesJson)
-    }),
-]
+  http.get("/api/movies", async () => {
+    await delay(1000);
+    return HttpResponse.json(moviesJson);
+  }),
+
+  http.post("/api/movies/:movieId", async () => {
+    await delay(1000);
+    return new HttpResponse(undefined, { status: 200 });
+  }),
+];
