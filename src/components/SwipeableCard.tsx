@@ -13,10 +13,7 @@ export const SwipeableCard: FC<PropsWithChildren<SwipeableCardProps>> = ({
   onSwipeLeft,
   onSwipeRight,
 }) => {
-  const handleDrag = (
-    event: MouseEvent | TouchEvent | PointerEvent,
-    info: PanInfo
-  ) => {
+  const handleDrag = (info: PanInfo) => {
     if (info.offset.x > SWIPE_THRESHOLD) {
       onSwipeLeft();
     } else if (info.offset.x < -SWIPE_THRESHOLD) {
@@ -27,7 +24,7 @@ export const SwipeableCard: FC<PropsWithChildren<SwipeableCardProps>> = ({
   return (
     <motion.div
       drag="x"
-      onDrag={handleDrag}
+      onDrag={(_, info) => handleDrag(info)}
       dragSnapToOrigin
       dragElastic={0.1}
       dragConstraints={{ left: -SWIPE_THRESHOLD, right: SWIPE_THRESHOLD }}
