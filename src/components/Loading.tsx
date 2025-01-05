@@ -4,7 +4,11 @@ import CircularProgress from "@mui/material/CircularProgress";
 export const Loading = () => {
   return (
     <Backdrop
-      sx={{ backgroundColor: "rgba(255, 255, 255, 0.5)", color: "#484848" }}
+      sx={{
+        backgroundColor: "#e0e0e080",
+        color: "#212121",
+        zIndex: 100,
+      }}
       open
     >
       <CircularProgress color="inherit" />

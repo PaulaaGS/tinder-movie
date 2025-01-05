@@ -22,7 +22,14 @@ export const MovieCard = ({
   onClick,
 }: MovieCardProps) => {
   return (
-    <Card sx={{ maxWidth: 345, paddingBottom: 5 }}>
+    <Card
+      sx={{
+        maxWidth: 345,
+        paddingBottom: 5,
+        backgroundColor: "#fafafa",
+        color: "#212121",
+      }}
+    >
       {isPending && <Loading />}
       <CardContent>
         <h2>{title}</h2>
