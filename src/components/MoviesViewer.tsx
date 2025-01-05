@@ -2,6 +2,7 @@ import { useMutation } from "@tanstack/react-query";
 import { FC, useState } from "react";
 import { Movie } from "../models/MovieModel";
 import { MovieCard } from "./MovieCard";
+import { SwipeableCard } from "./SwipeableCard";
 
 interface MoviesViewerProps {
   movies: Movie[];
@@ -21,27 +22,48 @@ export const MoviesViewer: FC<MoviesViewerProps> = ({ movies }) => {
     },
   });
 
-  const [movieIndex, setMovieIndex] = useState(0);
+  const [movieIndex, setMovieIndex] = useState(movies.length - 1);
 
-  const handleClick = (accepted: boolean) => {
+  const handleClick = (movieId: string, accepted: boolean) => {
     mutate(
       {
-        movieId: movies[movieIndex].id.toString(),
+        movieId,
         accepted,
       },
-      { onSuccess: () => setMovieIndex(movieIndex + 1) }
+      { onSuccess: () => setMovieIndex(movieIndex - 1) }
     );
   };
 
-  if (movieIndex >= movies.length) {
+  if (movieIndex < 0) {
     return <div>No movies to show</div>;
   }
 
   return (
-    <MovieCard
-      movie={movies[movieIndex]}
-      onClick={handleClick}
-      isPending={isPending}
-    />
+    <div style={{ width: "100%", height: "100%", position: "relative" }}>
+      {movies.map(
+        (movie, index) =>
+          movieIndex >= index && (
+            <SwipeableCard
+              key={movie.id}
+              style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                margin: "auto",
+              }}
+              onSwipeLeft={() => handleClick(movie.id, false)}
+              onSwipeRight={() => handleClick(movie.id, true)}
+            >
+              {movieIndex === index && (
+                <MovieCard
+                  movie={movie}
+                  onClick={(accepted) => handleClick(movie.id, accepted)}
+                  isPending={isPending}
+                />
+              )}
+            </SwipeableCard>
+          )
+      )}
+    </div>
   );
 };
