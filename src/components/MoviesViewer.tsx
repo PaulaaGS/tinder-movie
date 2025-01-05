@@ -12,7 +12,7 @@ export const MoviesViewer: FC<MoviesViewerProps> = ({ movies }) => {
   const { mutate, isPending } = useMutation({
     mutationFn: (params: { movieId: string; accepted: boolean }) => {
       const { movieId, accepted } = params;
-      return fetch(`http://localhost:5173/api/movies/${movieId}`, {
+      return fetch(`/api/movies/${movieId}`, {
         method: "POST",
         body: JSON.stringify({ accepted }),
         headers: {

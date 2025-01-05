@@ -7,7 +7,7 @@ export const Movies = () => {
   const { data, isLoading, isFetching } = useQuery<Movie[]>({
     queryKey: ["movies"],
     queryFn: async () => {
-      const response = await fetch("http://localhost:5173/api/movies");
+      const response = await fetch("/api/movies");
       return await response.json();
     },
   });
