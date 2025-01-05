@@ -1,8 +1,7 @@
 import { motion, PanInfo } from "motion/react";
-import { CSSProperties, FC, PropsWithChildren } from "react";
+import { FC, PropsWithChildren } from "react";
 
 interface SwipeableCardProps {
-  style: CSSProperties;
   onSwipeLeft: () => void;
   onSwipeRight: () => void;
 }
@@ -11,7 +10,6 @@ const SWIPE_THRESHOLD = 200;
 
 export const SwipeableCard: FC<PropsWithChildren<SwipeableCardProps>> = ({
   children,
-  style,
   onSwipeLeft,
   onSwipeRight,
 }) => {
@@ -28,7 +26,6 @@ export const SwipeableCard: FC<PropsWithChildren<SwipeableCardProps>> = ({
 
   return (
     <motion.div
-      style={style}
       drag="x"
       onDrag={handleDrag}
       dragSnapToOrigin

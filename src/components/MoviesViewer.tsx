@@ -42,30 +42,20 @@ export const MoviesViewer: FC<MoviesViewerProps> = ({ movies }) => {
     return <div>No movies to show</div>;
   }
 
-  return (
-    <div style={{ width: "100%", height: "100%", position: "relative" }}>
-      {movies.map(
-        (movie, index) =>
-          movieIndex === index && (
-            <SwipeableCard
-              key={movie.id}
-              style={{
-                position: "absolute",
-                top: 0,
-                left: 0,
-                margin: "auto",
-              }}
-              onSwipeLeft={() => handleClick(movie.id, false)}
-              onSwipeRight={() => handleClick(movie.id, true)}
-            >
-              <MovieCard
-                movie={movie}
-                onClick={(accepted) => handleClick(movie.id, accepted)}
-                isPending={isPending}
-              />
-            </SwipeableCard>
-          )
-      )}
-    </div>
+  return movies.map(
+    (movie, index) =>
+      movieIndex === index && (
+        <SwipeableCard
+          key={movie.id}
+          onSwipeLeft={() => handleClick(movie.id, false)}
+          onSwipeRight={() => handleClick(movie.id, true)}
+        >
+          <MovieCard
+            movie={movie}
+            onClick={(accepted) => handleClick(movie.id, accepted)}
+            isPending={isPending}
+          />
+        </SwipeableCard>
+      )
   );
 };

@@ -49,7 +49,7 @@ export const MovieCard = ({
             Rating: {rating}/10
           </Typography>
           <Rating
-            name="read-only"
+            name="rating"
             value={rating}
             precision={0.5}
             size="small"
@@ -57,7 +57,11 @@ export const MovieCard = ({
             readOnly
           />
         </Box>
-        <img src={imageURL} alt={title} style={{ maxWidth: "100%" }} />
+        <img
+          src={imageURL}
+          alt={title}
+          style={{ maxWidth: "100%", pointerEvents: "none" }}
+        />
         <Box fontSize={12}>{summary}</Box>
       </CardContent>
       <CardActions
