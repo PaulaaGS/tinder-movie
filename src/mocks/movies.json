@@ -3,14 +3,35 @@
         "id": "1and3011",
         "imageURL": "https://upload.wikimedia.org/wikipedia/en/0/0d/Avengers_Endgame_poster.jpg",
         "title": "Avengers Endgame",
-        "summary": "Lorem ipsum....",
+        "summary": "After the devastating events of Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos' actions and restore balance to the universe.",
         "rating": 5.3
     },
     {
         "id": "2301abc",
         "imageURL": "https://upload.wikimedia.org/wikipedia/en/a/a2/Star_Wars_The_Force_Awakens_Theatrical_Poster.jpg",
         "title": "Star Wars: Episode VII - The Force Awakens",
-        "summary": "Lorem ipsum....",
+        "summary": "As a new threat to the galaxy rises, Rey, a desert scavenger, and Finn, an ex-stormtrooper, must join Han Solo and Chewbacca to search for the one hope of restoring peace.",
         "rating": 8.2
+    },
+    {
+        "id": "3bcd4012",
+        "imageURL": "https://upload.wikimedia.org/wikipedia/en/2/2e/Inception_%282010%29_theatrical_poster.jpg",
+        "title": "Inception",
+        "summary": "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.",
+        "rating": 8.8
+    },
+    {
+        "id": "4def5013",
+        "imageURL": "https://upload.wikimedia.org/wikipedia/en/a/a1/Doctor_Strange_%282016_film%29_poster.jpg",
+        "title": "Doctor Strange",
+        "summary": "While on a journey of physical and spiritual healing, a brilliant neurosurgeon is drawn into the world of the mystic arts.",
+        "rating": 7.5
+    },
+    {
+        "id": "5ghi6014",
+        "imageURL": "https://upload.wikimedia.org/wikipedia/en/f/fe/1917_%282019%29_Film_Poster.jpeg",
+        "title": "1917",
+        "summary": "Two young British soldiers during the First World War are given an impossible mission: deliver a message deep in enemy territory that will stop their own men, and Blake's own brother, from walking straight into a deadly trap.",
+        "rating": 8.3
     }
 ]

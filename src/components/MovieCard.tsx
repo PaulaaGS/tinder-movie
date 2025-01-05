@@ -41,11 +41,13 @@ export const MovieCard = ({
           justifyContent: "center",
         }}
       >
-        <Typography variant="h2" fontSize={24}>
+        <Typography variant="h2" fontSize={20} fontWeight="bold">
           {title}
         </Typography>
         <Box>
-          <Typography component="legend">Rating: {rating}/10</Typography>
+          <Typography component="legend" fontSize={12}>
+            Rating: {rating}/10
+          </Typography>
           <Rating
             name="read-only"
             value={rating}
@@ -55,10 +57,12 @@ export const MovieCard = ({
             readOnly
           />
         </Box>
-        <img src={imageURL} alt={title} />
-        <div>{summary}</div>
+        <img src={imageURL} alt={title} style={{ maxWidth: "100%" }} />
+        <Box fontSize={12}>{summary}</Box>
       </CardContent>
-      <CardActions sx={{ justifyContent: "center", paddingTop: "20px" }}>
+      <CardActions
+        sx={{ justifyContent: "space-between", padding: 0, marginTop: "20px" }}
+      >
         <Button
           variant="contained"
           color="success"
