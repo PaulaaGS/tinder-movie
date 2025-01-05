@@ -1,5 +1,6 @@
 import { Check, Close } from "@mui/icons-material";
 import {
+  Box,
   Button,
   Card,
   CardActions,
@@ -24,28 +25,40 @@ export const MovieCard = ({
   return (
     <Card
       sx={{
-        maxWidth: 345,
-        paddingBottom: 5,
+        maxWidth: "345px",
+        padding: "20px",
         backgroundColor: "#fafafa",
         color: "#212121",
       }}
     >
       {isPending && <Loading />}
-      <CardContent>
-        <h2>{title}</h2>
-        <Typography component="legend">Rating: {rating}/10</Typography>
-        <Rating
-          name="read-only"
-          value={rating}
-          precision={0.5}
-          size="small"
-          max={10}
-          readOnly
-        />
+      <CardContent
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "20px",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Typography variant="h2" fontSize={24}>
+          {title}
+        </Typography>
+        <Box>
+          <Typography component="legend">Rating: {rating}/10</Typography>
+          <Rating
+            name="read-only"
+            value={rating}
+            precision={0.5}
+            size="small"
+            max={10}
+            readOnly
+          />
+        </Box>
         <img src={imageURL} alt={title} />
         <div>{summary}</div>
       </CardContent>
-      <CardActions sx={{ justifyContent: "center" }}>
+      <CardActions sx={{ justifyContent: "center", paddingTop: "20px" }}>
         <Button
           variant="contained"
           color="success"

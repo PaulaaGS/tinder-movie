@@ -38,12 +38,10 @@ export const MoviesViewer: FC<MoviesViewerProps> = ({ movies }) => {
   }
 
   return (
-    <div>
-      <MovieCard
-        movie={movies[movieIndex]}
-        onClick={handleClick}
-        isPending={isPending}
-      />
-    </div>
+    <MovieCard
+      movie={movies[movieIndex]}
+      onClick={handleClick}
+      isPending={isPending}
+    />
   );
 };
