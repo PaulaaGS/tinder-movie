@@ -45,17 +45,19 @@ In the project directory, you can run the following scripts:
 
 ## Mocking API Requests
 
-The project uses `msw` (Mock Service Worker) to mock API requests. The mock service worker is configured in the [mocks](./src/mocks/) directory.
+The project uses `msw` (Mock Service Worker) to mock API requests. [Read more...](https://mswjs.io/)
+
+The mock service worker is configured in the [mocks](./src/mocks/) directory.
 
 - [browser.ts](./src/mocks/browser.ts): Sets up the mock service worker.
 - [handlers.ts](./src/mocks/handlers.ts): Defines the request handlers for the mock API.
 - [movies.json](./src/mocks/movies.json): Contains the mock data for movies.
 
-The mock service worker is started in [main.tsx](./src/main.tsx):
+The mock service worker is started in [main.tsx](./src/main.tsx).
 
 ## GitHub Pages Deployment
 
-The project is configured to deploy to GitHub Pages using GitHub Actions. The workflow is defined in [gh-pages-deploy.yml](./.github/workflows/gh-pages-deploy.yml)
+The project is configured to deploy to GitHub Pages using GitHub Actions. The workflow is defined in [gh-pages-deploy.yml](./.github/workflows/gh-pages-deploy.yml).
 
 To deploy the project to GitHub Pages, push your changes to the main branch or manually trigger the workflow from the Actions tab in your GitHub repository.
 
