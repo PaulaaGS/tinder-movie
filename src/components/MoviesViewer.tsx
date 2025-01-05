@@ -25,6 +25,10 @@ export const MoviesViewer: FC<MoviesViewerProps> = ({ movies }) => {
   const [movieIndex, setMovieIndex] = useState(movies.length - 1);
 
   const handleClick = (movieId: string, accepted: boolean) => {
+    if (isPending) {
+      return;
+    }
+
     mutate(
       {
         movieId,
@@ -42,7 +46,7 @@ export const MoviesViewer: FC<MoviesViewerProps> = ({ movies }) => {
     <div style={{ width: "100%", height: "100%", position: "relative" }}>
       {movies.map(
         (movie, index) =>
-          movieIndex >= index && (
+          movieIndex === index && (
             <SwipeableCard
               key={movie.id}
               style={{
@@ -54,13 +58,11 @@ export const MoviesViewer: FC<MoviesViewerProps> = ({ movies }) => {
               onSwipeLeft={() => handleClick(movie.id, false)}
               onSwipeRight={() => handleClick(movie.id, true)}
             >
-              {movieIndex === index && (
-                <MovieCard
-                  movie={movie}
-                  onClick={(accepted) => handleClick(movie.id, accepted)}
-                  isPending={isPending}
-                />
-              )}
+              <MovieCard
+                movie={movie}
+                onClick={(accepted) => handleClick(movie.id, accepted)}
+                isPending={isPending}
+              />
             </SwipeableCard>
           )
       )}
