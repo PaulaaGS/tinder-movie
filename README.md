@@ -8,6 +8,7 @@ Tinder Movie is a React application built with TypeScript and Vite. It allows us
 - [Available Scripts](#available-scripts)
 - [Mocking API Requests](#mocking-api-requests)
 - [GitHub Pages Deployment](#github-pages-deployment)
+- [Possible Future Improvements](#possible-future-improvements)
 
 ## Getting Started
 
@@ -62,3 +63,17 @@ The project is configured to deploy to GitHub Pages using GitHub Actions. The wo
 To deploy the project to GitHub Pages, push your changes to the main branch or manually trigger the workflow from the Actions tab in your GitHub repository.
 
 Demo is available here: [paulaags.github.io/tinder-movie/](https://paulaags.github.io/tinder-movie/)
+
+## Possible Future Improvements
+
+Here are some ideas for future improvements to the Tinder Movie application:
+
+- **User Authentication**: Implement user authentication to allow users to create accounts, log in, and save their favorite movies.
+- **Movie Details Page**: Add a detailed movie page that provides more information about each movie, including trailers, reviews, and ratings.
+- **Advanced Filtering**: Add advanced filtering options to allow users to filter movies by genre, release year, rating, etc.
+- **Recommendations**: Implement a recommendation system to suggest movies based on user preferences and past interactions.
+- **Dark Mode**: Add a dark mode option to improve the user experience in low-light environments.
+- **Internationalization (i18n)**: Add support for multiple languages to make the application accessible to a wider audience.
+- **Mobile App**: Develop a mobile version of the application for iOS and Android platforms.
+
+These improvements can enhance the functionality and user experience of the Tinder Movie application.
