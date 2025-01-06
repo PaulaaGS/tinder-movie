@@ -25,16 +25,13 @@ vi.mock("./SwipeableCard", () => ({
   SwipeableCard: ({
     children,
     onSwipeLeft,
-    onSwipeRight,
   }: {
     children: React.ReactNode;
     onSwipeLeft: () => void;
-    onSwipeRight: () => void;
   }) => (
     <div>
       {children}
       <button onClick={onSwipeLeft}>Swipe Left</button>
-      <button onClick={onSwipeRight}>Swipe Right</button>
     </div>
   ),
 }));
@@ -63,12 +60,12 @@ describe("MoviesViewer", () => {
     fireEvent.click(screen.getByText("Swipe Left"));
 
     expect(mutateMock).toHaveBeenCalledWith(
-      { movieId: "2", accepted: true },
+      { movieId: "2", accepted: false },
       expect.any(Object)
     );
   });
 
-  it("should call mutate function with accepted true on swipe right", () => {
+  it("should call mutate function with accepted false on reject click", () => {
     const mutateMock = vi.fn();
     vi.spyOn(MoviesHooks, "useMutateMovie").mockReturnValue({
       mutate: mutateMock,
@@ -77,10 +74,27 @@ describe("MoviesViewer", () => {
 
     render(<MoviesViewer movies={mockMovies} />);
 
-    fireEvent.click(screen.getByText("Swipe Right"));
+    fireEvent.click(screen.getByText("Reject"));
 
     expect(mutateMock).toHaveBeenCalledWith(
       { movieId: "2", accepted: false },
+      expect.any(Object)
+    );
+  });
+
+  it("should call mutate function with accepted true on accept click", () => {
+    const mutateMock = vi.fn();
+    vi.spyOn(MoviesHooks, "useMutateMovie").mockReturnValue({
+      mutate: mutateMock,
+      isPending: false,
+    });
+
+    render(<MoviesViewer movies={mockMovies} />);
+
+    fireEvent.click(screen.getByText("Accept"));
+
+    expect(mutateMock).toHaveBeenCalledWith(
+      { movieId: "2", accepted: true },
       expect.any(Object)
     );
   });
