@@ -1,16 +1,9 @@
-import { useQuery } from "@tanstack/react-query";
-import { Movie } from "../models/MovieModel";
-import { MoviesViewer } from "./MoviesViewer";
+import { useGetMovies } from "../hooks/MoviesHooks";
 import { Loading } from "./Loading";
+import { MoviesViewer } from "./MoviesViewer";
 
 export const Movies = () => {
-  const { data, isLoading, isFetching } = useQuery<Movie[]>({
-    queryKey: ["movies"],
-    queryFn: async () => {
-      const response = await fetch("/api/movies");
-      return await response.json();
-    },
-  });
+  const { data, isLoading, isFetching } = useGetMovies();
 
   if (isLoading || isFetching) {
     return <Loading />;

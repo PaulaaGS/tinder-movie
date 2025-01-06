@@ -1,5 +1,5 @@
-import { useMutation } from "@tanstack/react-query";
 import { FC, useState } from "react";
+import { useMutateMovie } from "../hooks/MoviesHooks";
 import { Movie } from "../models/MovieModel";
 import { MovieCard } from "./MovieCard";
 import { SwipeableCard } from "./SwipeableCard";
@@ -9,19 +9,7 @@ interface MoviesViewerProps {
 }
 
 export const MoviesViewer: FC<MoviesViewerProps> = ({ movies }) => {
-  const { mutate, isPending } = useMutation({
-    mutationFn: (params: { movieId: string; accepted: boolean }) => {
-      const { movieId, accepted } = params;
-      return fetch(`/api/movies/${movieId}`, {
-        method: "POST",
-        body: JSON.stringify({ accepted }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-    },
-  });
-
+  const { mutate, isPending } = useMutateMovie();
   const [movieIndex, setMovieIndex] = useState(movies.length - 1);
 
   const handleClick = (movieId: string, accepted: boolean) => {
