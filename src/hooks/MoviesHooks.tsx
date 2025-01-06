@@ -5,7 +5,7 @@ export const useGetMovies = () => {
   const { data, isLoading, isFetching } = useQuery<Movie[]>({
     queryKey: ["movies"],
     queryFn: async () => {
-      const response = await fetch("/api/movies");
+      const response = await fetch("/recommendations");
       return await response.json();
     },
   });
@@ -17,7 +17,7 @@ export const useMutateMovie = () => {
   const { mutate, isPending } = useMutation({
     mutationFn: (params: { movieId: string; accepted: boolean }) => {
       const { movieId, accepted } = params;
-      return fetch(`/api/movies/${movieId}`, {
+      return fetch(`/recommendations/${movieId}`, {
         method: "POST",
         body: JSON.stringify({ accepted }),
         headers: {

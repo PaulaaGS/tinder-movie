@@ -43,13 +43,16 @@ describe("MoviesHooks", () => {
 
       // Assert
       await waitFor(() => {
-        expect(window.fetch).toHaveBeenCalledWith(`/api/movies/${movieId}`, {
-          method: "POST",
-          body: JSON.stringify({ accepted }),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
+        expect(window.fetch).toHaveBeenCalledWith(
+          `/recommendations/${movieId}`,
+          {
+            method: "POST",
+            body: JSON.stringify({ accepted }),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
       });
     });
   });
