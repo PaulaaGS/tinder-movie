@@ -6,7 +6,7 @@ interface SwipeableCardProps {
   onSwipeRight: () => void;
 }
 
-const SWIPE_THRESHOLD = 200;
+export const SWIPE_THRESHOLD = 200;
 
 export const SwipeableCard: FC<PropsWithChildren<SwipeableCardProps>> = ({
   children,
@@ -15,9 +15,9 @@ export const SwipeableCard: FC<PropsWithChildren<SwipeableCardProps>> = ({
 }) => {
   const handleDrag = (info: PanInfo) => {
     if (info.offset.x > SWIPE_THRESHOLD) {
-      onSwipeLeft();
-    } else if (info.offset.x < -SWIPE_THRESHOLD) {
       onSwipeRight();
+    } else if (info.offset.x < -SWIPE_THRESHOLD) {
+      onSwipeLeft();
     }
   };
 

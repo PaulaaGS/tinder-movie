@@ -35,8 +35,8 @@ export const MoviesViewer: FC<MoviesViewerProps> = ({ movies }) => {
       movieIndex === index && (
         <SwipeableCard
           key={movie.id}
-          onSwipeLeft={() => handleClick(movie.id, false)}
-          onSwipeRight={() => handleClick(movie.id, true)}
+          onSwipeLeft={() => handleClick(movie.id, true)}
+          onSwipeRight={() => handleClick(movie.id, false)}
         >
           <MovieCard
             movie={movie}

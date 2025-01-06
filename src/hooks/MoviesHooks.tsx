@@ -2,17 +2,19 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import { Movie } from "../models/MovieModel";
 
 export const useGetMovies = () => {
-  return useQuery<Movie[]>({
+  const { data, isLoading, isFetching } = useQuery<Movie[]>({
     queryKey: ["movies"],
     queryFn: async () => {
       const response = await fetch("/api/movies");
       return await response.json();
     },
   });
+
+  return { data, isLoading, isFetching };
 };
 
 export const useMutateMovie = () => {
-  return useMutation({
+  const { mutate, isPending } = useMutation({
     mutationFn: (params: { movieId: string; accepted: boolean }) => {
       const { movieId, accepted } = params;
       return fetch(`/api/movies/${movieId}`, {
@@ -24,4 +26,6 @@ export const useMutateMovie = () => {
       });
     },
   });
+
+  return { mutate, isPending };
 };
